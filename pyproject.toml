@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "schoolmeal-opt"
+version = "0.1.0"
+description = "Zero-dependency Home-Grown School Feeding (HGSF) optimizer: FAO/WFP 30-40% RDA nutrition verifier (kcal, protein, iron, vitamin A, zinc), Two-Phase Simplex LP least-cost local meal planner, and smallholder procurement tonnage."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Akandwanaho Ivan Alvin" }]
+keywords = [
+    "school-feeding",
+    "nutrition",
+    "linear-programming",
+    "simplex",
+    "edtech",
+    "food-security",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.scripts]
+schoolmeal-opt = "schoolmeal_opt.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/schoolmeal_opt"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
